@@ -1,0 +1,35 @@
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+
+# misc
+/assets
+/.vscode
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+yarn.lock
+
+# client
+# dependencies
+client/node_modules
+
+# testing
+client/coverage
+
+# production
+client/build
+
+#assets
+client/assets
+
+# misc
+client/.vscode
+client/npm-debug.log*
+client/yarn-debug.log*
+client/yarn-error.log*
+client/yarn.lock
+
+
