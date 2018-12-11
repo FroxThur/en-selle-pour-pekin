@@ -78,7 +78,7 @@ function Indicators({ classes }) {
               title="Distance parcourue"
             />
             <CardContent>
-              <Typography component="p" gutterBottom>
+              <Typography variant="h6" gutterBottom>
                 2421 km
               </Typography>
             </CardContent>
@@ -94,7 +94,7 @@ function Indicators({ classes }) {
               title="Position"
             />
             <CardContent>
-              <Typography component="p" gutterBottom>
+              <Typography variant="h6" gutterBottom>
                 Bulgarie
               </Typography>
             </CardContent>

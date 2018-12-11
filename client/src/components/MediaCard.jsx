@@ -7,6 +7,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Grid from "@material-ui/core/Grid";
 import { v4 } from "uuid";
 import ReactPlayer from "react-player";
+import Typography from "@material-ui/core/Typography";
 
 //import FourImgsTile from "components/FourImgsTile.jsx";
 import LineGrid from "components/LineGrid.jsx";
@@ -17,8 +18,7 @@ const styles = () => ({
     height: "100%"
   },
   mediaContent: {
-    width: "100%",
-    height: "100%"
+    height: "180px"
   },
   icons: {
     color: "rgba(255, 255, 255, 0.54)"
@@ -36,9 +36,17 @@ const MediaCard = ({ medias, classes, handleOpenAlbum }) => {
     >
       {medias.map(media => {
         return (
-          <Grid item className={classes.gridItem} sm={12} md={6} key={v4()}>
+          <Grid item sm={12} md={6} key={v4()}>
             <Card>
-              <CardHeader title={media.name} subheader={media.description} />
+              <CardHeader
+                disableTypography={false}
+                title={
+                  <Typography variant="h6" gutterBottom noWrap>
+                    {media.name}
+                  </Typography>
+                }
+                subheader={media.description}
+              />
               <CardContent>
                 {media.type === "photos_album" ? (
                   <LineGrid
@@ -47,10 +55,13 @@ const MediaCard = ({ medias, classes, handleOpenAlbum }) => {
                     handleOpenAlbum={albumName => handleOpenAlbum(albumName)}
                   />
                 ) : media.type === "YT_video" ? (
-                  <ReactPlayer
-                    className={classes.mediaContent}
-                    url={"https://www.youtube.com/watch?v=" + media.videoId}
-                  />
+                  <div className={classes.mediaContent}>
+                    <ReactPlayer
+                      url={"https://www.youtube.com/watch?v=" + media.videoId}
+                      height="100%"
+                      width="100%"
+                    />
+                  </div>
                 ) : null}
               </CardContent>
             </Card>

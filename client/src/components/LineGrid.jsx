@@ -23,9 +23,6 @@ const styles = theme => ({
     transform: "translateZ(0)",
     overflow: "hidden"
   },
-  gridListItem: {
-    height: "360px"
-  },
   title: {
     color: theme.palette.primary.light
   },
@@ -45,8 +42,8 @@ function LineGrid(props) {
     <div className={classes.root}>
       <GridList className={classes.gridList} cols={2.5}>
         {album.photos.map((photo, index) => (
-          <GridListTile key={v4()} className={classes.gridListItem}>
-            <img src={photo.photoResSm.source} alt="little" />
+          <GridListTile key={v4()}>
+            <img src={photo.photoResSm.source} alt="little album" />
             {index === 0 ? (
               <GridListTileBar
                 title={album.photo_count + " photos"}
