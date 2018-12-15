@@ -9,23 +9,34 @@ import { v4 } from "uuid";
 import ReactPlayer from "react-player";
 import Typography from "@material-ui/core/Typography";
 
-//import FourImgsTile from "components/FourImgsTile.jsx";
-import LineGrid from "components/LineGrid.jsx";
+import GalleryLight from "components/GalleryLight.jsx";
 
-const styles = () => ({
+const styles = theme => ({
   gridList: {
     width: "100%",
     height: "100%"
   },
   mediaContent: {
-    height: "180px"
+    margin: "auto"
   },
   icons: {
     color: "rgba(255, 255, 255, 0.54)"
+  },
+  button: {
+    marginLeft: "auto"
+  },
+  leftIcon: {
+    marginRight: theme.spacing.unit
+  },
+  rightIcon: {
+    marginLeft: theme.spacing.unit
+  },
+  iconSmall: {
+    fontSize: 20
   }
 });
 
-const MediaCard = ({ medias, classes, handleOpenAlbum }) => {
+const MediaCard = ({ medias, classes }) => {
   return (
     <Grid
       container
@@ -36,7 +47,7 @@ const MediaCard = ({ medias, classes, handleOpenAlbum }) => {
     >
       {medias.map(media => {
         return (
-          <Grid item sm={12} md={6} key={v4()}>
+          <Grid item sm={12} key={v4()}>
             <Card>
               <CardHeader
                 disableTypography={false}
@@ -49,16 +60,17 @@ const MediaCard = ({ medias, classes, handleOpenAlbum }) => {
               />
               <CardContent>
                 {media.type === "photos_album" ? (
-                  <LineGrid
-                    className={classes.mediaContent}
-                    album={media}
-                    handleOpenAlbum={albumName => handleOpenAlbum(albumName)}
-                  />
+                  <React.Fragment>
+                    <GalleryLight
+                      album={media}
+                      showThumbnails
+                      backdropClosesModal={true}
+                    />
+                  </React.Fragment>
                 ) : media.type === "YT_video" ? (
                   <div className={classes.mediaContent}>
                     <ReactPlayer
                       url={"https://www.youtube.com/watch?v=" + media.videoId}
-                      height="100%"
                       width="100%"
                     />
                   </div>

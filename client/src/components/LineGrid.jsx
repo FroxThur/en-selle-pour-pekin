@@ -23,34 +23,41 @@ const styles = theme => ({
     transform: "translateZ(0)",
     overflow: "hidden"
   },
-  title: {
-    color: theme.palette.primary.light
-  },
-  titleBar: {
-    background:
-      "linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)"
-  },
   icons: {
     color: "rgba(255, 255, 255, 0.54)"
+  },
+  source: {
+    height: "100%"
   }
 });
 
 function LineGrid(props) {
-  const { album, classes, handleOpenAlbum } = props;
+  const { album, classes, openLightbox } = props;
 
   return (
     <div className={classes.root}>
       <GridList className={classes.gridList} cols={2.5}>
-        {album.photos.map((photo, index) => (
+        {album.photos.slice(0,3).map((photo, index) => (
           <GridListTile key={v4()}>
+            <a
+              href={photo.photoResSm.source}
+              onClick={event => openLightbox(index, event)}
+            >
+              <img
+                src={photo.photoResSm.source}
+                className={classes.source}
+                alt="Album"
+              />
+            </a>
             <img src={photo.photoResSm.source} alt="little album" />
             {index === 0 ? (
               <GridListTileBar
                 title={album.photo_count + " photos"}
+                onClick={event => openLightbox(index, event)}
                 actionIcon={
                   <IconButton
                     className={classes.icons}
-                    onClick={() => handleOpenAlbum(album.name)}
+                    onClick={event => openLightbox(index, event)}
                   >
                     <Add />
                   </IconButton>

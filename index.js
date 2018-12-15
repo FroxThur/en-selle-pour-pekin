@@ -10,7 +10,6 @@ app.use(express.static(path.join(__dirname, "client/build")));
 // Put all API endpoints under '/api'
 app.get("/api/getData", (req, res) => {
   res.json(mediaData);
-  console.log("Sent list of items");
 });
 
 // send robots.txt
@@ -28,5 +27,3 @@ const port = process.env.PORT || 5000;
 app.listen(port);
 
 console.log(`Service listening on port ${port}`);
-
-console.log("Getting FB data");
