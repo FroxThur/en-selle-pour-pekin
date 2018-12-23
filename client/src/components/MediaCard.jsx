@@ -72,6 +72,7 @@ const MediaCard = ({ medias, classes }) => {
                     <ReactPlayer
                       url={"https://www.youtube.com/watch?v=" + media.videoId}
                       width="100%"
+                      controls={true}
                     />
                   </div>
                 ) : null}

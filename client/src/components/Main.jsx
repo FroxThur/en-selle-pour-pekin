@@ -5,9 +5,7 @@ import { withStyles } from "@material-ui/core/styles";
 import Home from "views/Home/Home.jsx";
 import MediaPage from "views/MediaPage/MediaPage.jsx";
 import OSMapPage from "views/OSMapPage/OSMapPage.jsx";
-//import PresentationPage from "views/PresentationPage/PresentationPage.jsx";
-//import LoginPage from "views/LoginPage/LoginPage.jsx";
-//import PhotosPage from "views/PhotosPage/PhotosPage.jsx";
+import PresentationPage from "views/PresentationPage/PresentationPage.jsx";
 
 const styles = theme => ({
   content: {
@@ -17,9 +15,10 @@ const styles = theme => ({
 
 const Main = ({ classes }) => (
   <div className={classes.content}>
-    <Route exact path="/" component={Home} />{" "}
+    <Route exact path="/" component={Home} />
     <Route path="/carte" component={OSMapPage} />
     <Route path="/media" component={MediaPage} />
+    <Route path="/presentation" component={PresentationPage} />
   </div>
 );
 

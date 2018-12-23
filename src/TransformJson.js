@@ -118,4 +118,6 @@ mediaData.map(media => {
   return media;
 });
 
+fs.writeFileSync("assets/esppData.json", JSON.stringify(mediaData));
+
 module.exports = mediaData;

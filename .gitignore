@@ -25,6 +25,9 @@ client/build
 #assets
 client/assets
 
+#data
+client/public/esppData.json
+
 # misc
 client/.vscode
 client/npm-debug.log*

@@ -23,7 +23,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import HomeIcon from "@material-ui/icons/Home";
 import PlaceIcon from "@material-ui/icons/Place";
 import PhotoIcon from "@material-ui/icons/PhotoCamera";
-//import FaceIcon from "@material-ui/icons/Face";
+import FaceIcon from "@material-ui/icons/Face";
 import greyColor from "@material-ui/core/colors/grey";
 
 const styles = theme => ({
@@ -81,6 +81,9 @@ class ResponsiveNav extends React.Component {
       case "/carte":
         tabsValue = 2;
         break;
+      case "/presentation":
+        tabsValue = 3;
+        break;
       default:
         tabsValue = 0;
     }
@@ -107,12 +110,12 @@ class ResponsiveNav extends React.Component {
             </ListItemIcon>
             <ListItemText primary={"Carte"} />
           </ListItem>
-          {/*<ListItem button>
+          <ListItem button component={Link} to={"/presentation"}>
             <ListItemIcon>
               <FaceIcon />
             </ListItemIcon>
             <ListItemText primary={"Présentation"} />
-          </ListItem>*/}
+          </ListItem>
         </List>
       </div>
     );
@@ -122,7 +125,7 @@ class ResponsiveNav extends React.Component {
         <Tab label={"Accueil"} component={Link} to={"/"} />
         <Tab label={"Photos"} component={Link} to={"/media"} />
         <Tab label={"Carte"} component={Link} to={"/carte"} />
-        {/* <Tab label={"Présentation"} />*/}
+        {<Tab label={"Présentation"} component={Link} to={"/presentation"} />}
       </Tabs>
     );
 
@@ -181,4 +184,3 @@ ResponsiveNav.propTypes = {
 };
 
 export default withRouter(withStyles(styles)(ResponsiveNav));
-

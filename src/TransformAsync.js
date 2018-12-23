@@ -1,9 +1,10 @@
-//var CronJob = require("cron").CronJob;
+var CronJob = require("cron").CronJob;
 var fs = require("fs");
 var moment = require("moment");
-/*new CronJob("5 0 * * *", () => {
+
+new CronJob("5 0 * * *", () => {
   console.log("You will see this message every second");
-});*/
+});
 
 //Date and hour in french
 moment.locale("fr");

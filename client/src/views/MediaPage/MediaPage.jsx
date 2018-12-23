@@ -11,20 +11,11 @@ class MediaPage extends Component {
     };
   }
 
-  handleOpen(albumName) {
-    this.setState({ carouselOpen: true, albumName: albumName });
-  }
-
-  handleClose = () => {
-    this.setState({ carouselOpen: false });
-  };
-
   //todo : if pictures are in local storage, do not update
   componentDidMount() {
-    fetch("/api/getData")
+    fetch("esppData.json")
       .then(res => res.json())
       .then(medias => {
-        localStorage.setItem("albumData", JSON.stringify(medias));
         this.setState(() => ({
           loading: false,
           medias: medias

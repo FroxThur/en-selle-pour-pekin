@@ -12,6 +12,7 @@
     "react-country-flag": "^1.0.1",
     "react-dom": "^16.6.3",
     "react-images": "^0.5.19",
+    "react-measure": "^2.2.2",
     "react-photo-gallery": "^6.2.2",
     "react-player": "^1.7.1",
     "react-router-dom": "^4.3.1",
@@ -23,7 +24,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:5000",
   "eslintConfig": {
     "extends": "react-app"
   },
