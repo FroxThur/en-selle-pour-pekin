@@ -15,10 +15,10 @@ class MediaPage extends Component {
   componentDidMount() {
     fetch("esppData.json")
       .then(res => res.json())
-      .then(medias => {
+      .then(esppData => {
         this.setState(() => ({
           loading: false,
-          medias: medias
+          medias: esppData.medias
         }));
       })
       .catch(error => console.error(error));

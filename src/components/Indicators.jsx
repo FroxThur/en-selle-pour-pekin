@@ -10,27 +10,13 @@ import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import purpleColor from "@material-ui/core/colors/purple"
-import indigoColor from "@material-ui/core/colors/indigo"
-import tealColor from "@material-ui/core/colors/teal"
-
+import purpleColor from "@material-ui/core/colors/purple";
+import indigoColor from "@material-ui/core/colors/indigo";
+import tealColor from "@material-ui/core/colors/teal";
+import lightGreenColor from "@material-ui/core/colors/lightGreen";
 
 import ReactCountryFlag from "react-country-flag";
-import countriesTranslation from "i18n-iso-countries";
-import { translate } from "deepl-translator";
-countriesTranslation.registerLocale(
-  require("i18n-iso-countries/langs/fr.json")
-);
-const realCountries = [
-  "France",
-  "Suisse",
-  "Allemagne",
-  "Autriche",
-  "Slovaquie",
-  "Hongrie",
-  "Serbie",
-  "Bulgarie"
-];
+
 
 const styles = theme => ({
   root: {
@@ -50,6 +36,9 @@ const styles = theme => ({
   cardHeader3: {
     backgroundColor: tealColor[200]
   },
+  cardHeader4: {
+    backgroundColor: lightGreenColor[200]
+  },
   countries: {
     display: "flex"
   },
@@ -58,7 +47,7 @@ const styles = theme => ({
   }
 });
 
-function Indicators({ classes }) {
+const Indicators = ({ classes, mapData }) => {
   return (
     <div className={classes.root}>
       <Grid
@@ -68,7 +57,7 @@ function Indicators({ classes }) {
         justify="space-evenly"
         alignItems="center"
       >
-        <Grid item className={classes.gridItem} xs={12} sm={6} md={4}>
+        <Grid item className={classes.gridItem} xs={12} sm={6} md={3}>
           <Card>
             <CardHeader
               classes={{
@@ -79,12 +68,12 @@ function Indicators({ classes }) {
             />
             <CardContent>
               <Typography variant="h6" gutterBottom>
-                2421 km
+                {mapData.lastMarker.distance} km
               </Typography>
             </CardContent>
           </Card>
         </Grid>
-        <Grid item className={classes.gridItem} xs={12} sm={6} md={4}>
+        <Grid item className={classes.gridItem} xs={12} sm={6} md={3}>
           <Card>
             <CardHeader
               classes={{
@@ -95,39 +84,49 @@ function Indicators({ classes }) {
             />
             <CardContent>
               <Typography variant="h6" gutterBottom>
-                Bulgarie
+                {mapData.lastMarker.description +
+                  " - " +
+                  mapData.lastMarker.place.country}
               </Typography>
             </CardContent>
           </Card>
         </Grid>
-        <Grid item className={classes.gridItem} xs={12} sm={6} md={4}>
+        <Grid item className={classes.gridItem} xs={12} sm={6} md={3}>
           <Card>
             <CardHeader
               classes={{
                 root: classes.cardHeader3
+              }}
+              avatar={<MyLocation />}
+              title="Jour"
+            />
+            <CardContent>
+              <Typography variant="h6" gutterBottom>
+                {mapData.lastMarker.day}
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item className={classes.gridItem} xs={12} sm={6} md={3}>
+          <Card>
+            <CardHeader
+              classes={{
+                root: classes.cardHeader4
               }}
               avatar={<Panorama />}
               title="Pays traversés"
             />
             <CardContent>
               <div className={classes.countries}>
-                {realCountries.map(country => {
-                  const countryCode = countriesTranslation.getAlpha2Code(
-                    country,
-                    "fr"
+                {mapData.crossedCountry.map(countryCode => {
+                  return (
+                    <div
+                      className={classes.countryFlags}
+                      key={countryCode.toString()}
+                    >
+                      <ReactCountryFlag code={countryCode} svg />
+                    </div>
                   );
-                  if (countryCode === undefined) {
-                    translate(country, "FR", "EN").catch(console.error);
-                    return null;
-                  } else
-                    return (
-                      <div
-                        className={classes.countryFlags}
-                        key={countryCode.toString()}
-                      >
-                        <ReactCountryFlag code={countryCode} svg />
-                      </div>
-                    );
                 })}
               </div>
             </CardContent>
@@ -136,6 +135,6 @@ function Indicators({ classes }) {
       </Grid>
     </div>
   );
-}
+};
 
 export default withStyles(styles)(Indicators);

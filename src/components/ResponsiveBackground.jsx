@@ -24,16 +24,19 @@ import BgImgLightSm from "assets/img/backgrounds/bgx480.jpg";
 
 const styles = theme => ({
   insideStyles: {
-    color: greyColor[200],
+    color: greyColor[800],
     position: "absolute",
-    top: "40%",
-    right: "10%"
+    top: "30%",
+    left: "10%"
   },
   backGroundStyle: {
     flexGrow: 1,
     padding: theme.spacing.unit * 3,
     paddingTop: "80vh",
-    background: "fixed 50% 50% no-repeat"
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "top left",
+    backgroundAttachment: "fixed",
+    backgroundSize: "cover"
   },
   backGroundStyleSmall: {
     paddingTop: "40vh"
@@ -110,10 +113,10 @@ const ResponsiveBackground = ({ classes, location, children }) => {
     >
       {showTitle ? (
         <div className={classes.insideStyles}>
-          <Typography variant="h3" color="inherit" gutterBottom align="right">
+          <Typography variant="h3" color="inherit" gutterBottom align="left">
             En selle pour Pékin
           </Typography>
-          <Typography variant="h5" color="inherit" align="right">
+          <Typography variant="h5" color="inherit" align="left">
             14 000 km à vélo, de la France à la Chine
           </Typography>
         </div>

@@ -11,8 +11,6 @@
   "dependencies": {
     "@material-ui/core": "^3.5.1",
     "@material-ui/icons": "^3.0.1",
-    "deepl-translator": "^1.2.1",
-    "i18n-iso-countries": "^3.7.8",
     "react": "^16.6.3",
     "react-country-flag": "^1.0.1",
     "react-dom": "^16.6.3",
@@ -28,7 +26,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy:prod": "rsync -avzhe ssh --progress ./build/* frox@en-selle-pour-pekin.eu:~/www/en-selle-pour-pekin/"
+    "deploy:prod": "./private_scripts/deploy-to-prod.sh"
   },
   "eslintConfig": {
     "extends": "react-app"

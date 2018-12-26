@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Divider from "@material-ui/core/Divider";
 
@@ -14,22 +14,51 @@ const styles = theme => ({
   }
 });
 
-const Home = ({ classes }) => {
+class Home extends Component {
   //setLocation(location.pathname);
-  return (
-    <React.Fragment>
-      <Indicators />
-      <Divider variant="middle" />
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: true,
+      mapData: null
+    };
+  }
 
-      <iframe
-        className={classes.iframe}
-        src="https://umap.openstreetmap.fr/fr/map/en-selle-pour-pekin_266919"
-        title="OSMap iframe"
-      >
-        <p>Your browser does not support iframes.</p>
-      </iframe>
-    </React.Fragment>
-  );
-};
+  componentDidMount() {
+    fetch("esppData.json")
+      .then(res => res.json())
+      .then(esppData => {
+        this.setState(() => ({
+          loading: false,
+          mapData: esppData.map
+        }));
+      })
+      .catch(error => console.error(error));
+  }
+
+  render() {
+    const { classes } = this.props;
+    const { mapData, loading } = this.state;
+    return (
+      <React.Fragment>
+        {loading ? (
+          <div>Chargement des données</div>
+        ) : (
+          <Indicators mapData={mapData} />
+        )}
+
+        <Divider variant="middle" />
+
+        <iframe
+          className={classes.iframe}
+          src="https://umap.openstreetmap.fr/fr/map/en-selle-pour-pekin_266919"
+          title="OSMap iframe"
+        >
+          <p>Your browser does not support iframes.</p>
+        </iframe>
+      </React.Fragment>
+    );
+  }
+}
 
 export default withStyles(styles, { withTheme: true })(Home);

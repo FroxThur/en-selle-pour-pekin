@@ -30,7 +30,7 @@ const MediaCard = ({ medias, classes }) => {
               <CardHeader
                 disableTypography={false}
                 title={
-                  <Typography variant="h6" gutterBottom noWrap>
+                  <Typography variant="h6" gutterBottom >
                     {media.name}
                   </Typography>
                 }

@@ -12,7 +12,8 @@ import clairLogo from "assets/img/logos/clair.webp";
 
 const styles = theme => ({
   avatar: {
-    height: "100%",
+    maxHeight: "100%",
+    maxWidth: "100%",
     borderRadius: "50%"
   },
   logo: {
