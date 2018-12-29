@@ -36,18 +36,23 @@ const styles = theme => ({
     backgroundRepeat: "no-repeat",
     backgroundPosition: "top left",
     backgroundAttachment: "fixed",
+    WebkitbackgroundSize: "cover",
+    MozBackgroundSize: "cover",
+    OBackgroundSize: "cover",
     backgroundSize: "cover"
   },
   backGroundStyleSmall: {
     paddingTop: "40vh"
   },
   backGroundImg0: {
-    backgroundImage: "url(" + BgImgBikeLg + ")",
-    "@media(max-width: 900px)": {
-      backgroundImage: "url(" + BgImgBikeMd + ")"
-    },
-    "@media(max-width: 480px)": {
-      backgroundImage: "url(" + BgImgBikeSm + ")"
+    noWebp: {
+      backgroundImage: "url(" + BgImgBikeLg + ")",
+      "@media(max-width: 900px)": {
+        backgroundImage: "url(" + BgImgBikeMd + ")"
+      },
+      "@media(max-width: 480px)": {
+        backgroundImage: "url(" + BgImgBikeSm + ")"
+      }
     }
   },
   backGroundImg1: {
