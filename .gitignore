@@ -27,5 +27,6 @@ src/assets
 #data
 public/esppData.json
 
-
+#private
+/private_scripts
 
