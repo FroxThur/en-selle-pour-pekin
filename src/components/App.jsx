@@ -5,7 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import ResponsiveNav from "components/ResponsiveNav.jsx";
 import Main from "components/Main.jsx";
 import Footer from "components/Footer.jsx";
-import ResponsiveBackground from "components/ResponsiveBackground";
+import ResponsiveBackground from "components/ResponsiveBackground/ResponsiveBackground.jsx";
 
 const styles = theme => ({
   appBarSpace: {

@@ -7,7 +7,7 @@ import Paper from "@material-ui/core/Paper";
 import Home from "views/Home/Home.jsx";
 import MediaPage from "views/MediaPage/MediaPage.jsx";
 import OSMapPage from "views/OSMapPage/OSMapPage.jsx";
-import PresentationPage from "views/PresentationPage/PresentationPage.jsx";
+import PartnerPage from "views/PartnerPage/PartnerPage.jsx";
 
 const styles = theme => ({
   root: {
@@ -22,7 +22,7 @@ const Main = ({ classes }) => (
     <Route exact path="/" component={Home} />
     <Route path="/carte" component={OSMapPage} />
     <Route path="/media" component={MediaPage} />
-    <Route path="/presentation" component={PresentationPage} />
+    <Route path="/partenaires" component={PartnerPage} />
   </Paper>
 );
 

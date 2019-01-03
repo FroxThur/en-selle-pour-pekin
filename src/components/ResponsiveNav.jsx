@@ -81,7 +81,7 @@ class ResponsiveNav extends React.Component {
       case "/carte":
         tabsValue = 2;
         break;
-      case "/presentation":
+      case "/partenaires":
         tabsValue = 3;
         break;
       default:
@@ -110,11 +110,11 @@ class ResponsiveNav extends React.Component {
             </ListItemIcon>
             <ListItemText primary={"Carte"} />
           </ListItem>
-          <ListItem button component={Link} to={"/presentation"}>
+          <ListItem button component={Link} to={"/partenaires"}>
             <ListItemIcon>
               <FaceIcon />
             </ListItemIcon>
-            <ListItemText primary={"Présentation"} />
+            <ListItemText primary={"Partenaires"} />
           </ListItem>
         </List>
       </div>
@@ -125,7 +125,7 @@ class ResponsiveNav extends React.Component {
         <Tab label={"Accueil"} component={Link} to={"/"} />
         <Tab label={"Photos"} component={Link} to={"/media"} />
         <Tab label={"Carte"} component={Link} to={"/carte"} />
-        {<Tab label={"Présentation"} component={Link} to={"/presentation"} />}
+        {<Tab label={"Partenaires"} component={Link} to={"/partenaires"} />}
       </Tabs>
     );
 

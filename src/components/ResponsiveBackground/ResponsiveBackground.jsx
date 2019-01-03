@@ -4,23 +4,10 @@ import { withStyles } from "@material-ui/core/styles";
 import { withRouter } from "react-router";
 import Typography from "@material-ui/core/Typography";
 import greyColor from "@material-ui/core/colors/grey";
-import classNames from "classnames";
 
-import BgImgBikeLg from "assets/img/backgrounds/bg12x1440.jpg";
-import BgImgBikeMd from "assets/img/backgrounds/bg12x900.jpg";
-import BgImgBikeSm from "assets/img/backgrounds/bg12x480.jpg";
+//import classNames from "classnames";
 
-import BgImgRoadLg from "assets/img/backgrounds/bg3x1440.jpg";
-import BgImgRoadMd from "assets/img/backgrounds/bg3x900.jpg";
-import BgImgRoadSm from "assets/img/backgrounds/bg3x480.jpg";
-
-import BgImgNightLg from "assets/img/backgrounds/bg9x1440.jpg";
-import BgImgNightMd from "assets/img/backgrounds/bg9x900.jpg";
-import BgImgNightSm from "assets/img/backgrounds/bg9x480.jpg";
-
-import BgImgLightLg from "assets/img/backgrounds/bgx1440.jpg";
-import BgImgLightMd from "assets/img/backgrounds/bgx900.jpg";
-import BgImgLightSm from "assets/img/backgrounds/bgx480.jpg";
+import bgStyle from "./style";
 
 const styles = theme => ({
   insideStyles: {
@@ -32,65 +19,20 @@ const styles = theme => ({
   backGroundStyle: {
     flexGrow: 1,
     padding: theme.spacing.unit * 3,
-    paddingTop: "80vh",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "top left",
     backgroundAttachment: "fixed",
-    WebkitbackgroundSize: "cover",
-    MozBackgroundSize: "cover",
+    WebkitBackgroundSize: "cover",
     OBackgroundSize: "cover",
     backgroundSize: "cover"
-  },
-  backGroundStyleSmall: {
-    paddingTop: "40vh"
-  },
-  backGroundImg0: {
-    noWebp: {
-      backgroundImage: "url(" + BgImgBikeLg + ")",
-      "@media(max-width: 900px)": {
-        backgroundImage: "url(" + BgImgBikeMd + ")"
-      },
-      "@media(max-width: 480px)": {
-        backgroundImage: "url(" + BgImgBikeSm + ")"
-      }
-    }
-  },
-  backGroundImg1: {
-    backgroundImage: "url(" + BgImgRoadLg + ")",
-    "@media(max-width: 900px)": {
-      backgroundImage: "url(" + BgImgRoadMd + ")"
-    },
-    "@media(max-width: 480px)": {
-      backgroundImage: "url(" + BgImgRoadSm + ")"
-    }
-  },
-  backGroundImg2: {
-    backgroundImage: "url(" + BgImgNightLg + ")",
-    "@media(max-width: 900px)": {
-      backgroundImage: "url(" + BgImgNightMd + ")"
-    },
-    "@media(max-width: 480px)": {
-      backgroundImage: "url(" + BgImgNightSm + ")"
-    }
-  },
-  backGroundImg3: {
-    backgroundImage: "url(" + BgImgLightLg + ")",
-    "@media(max-width: 900px)": {
-      backgroundImage: "url(" + BgImgLightMd + ")"
-    },
-    "@media(max-width: 480px)": {
-      backgroundImage: "url(" + BgImgLightSm + ")"
-    }
   }
 });
 
 const ResponsiveBackground = ({ classes, location, children }) => {
   let backGroundImg = 0;
-  let smallBackground = true;
   let showTitle = false;
   switch (location.pathname) {
     case "/":
-      smallBackground = false;
       showTitle = true;
       break;
     case "/media":
@@ -99,7 +41,7 @@ const ResponsiveBackground = ({ classes, location, children }) => {
     case "/carte":
       backGroundImg = 2;
       break;
-    case "/presentation":
+    case "/partenaires":
       backGroundImg = 3;
       break;
     default:
@@ -107,15 +49,7 @@ const ResponsiveBackground = ({ classes, location, children }) => {
   }
 
   return (
-    <main
-      className={classNames(classes.backGroundStyle, {
-        [classes.backGroundStyleSmall]: smallBackground,
-        [classes.backGroundImg0]: backGroundImg === 0,
-        [classes.backGroundImg1]: backGroundImg === 1,
-        [classes.backGroundImg2]: backGroundImg === 2,
-        [classes.backGroundImg3]: backGroundImg === 3
-      })}
-    >
+    <main className={classes.backGroundStyle} style={bgStyle[backGroundImg]}>
       {showTitle ? (
         <div className={classes.insideStyles}>
           <Typography variant="h3" color="inherit" gutterBottom align="left">

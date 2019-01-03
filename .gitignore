@@ -24,9 +24,11 @@ build
 #assets
 src/assets
 
+
 #data
 public/esppData.json
+public/backgrounds
 
 #private
 /private_scripts
-
+/baseImg
