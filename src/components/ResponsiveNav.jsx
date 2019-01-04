@@ -55,18 +55,20 @@ const styles = theme => ({
   }
 });
 
+const pathConf = [
+  { path: "/", name: "Accueil", icon: <HomeIcon /> },
+  { path: "/media", name: "Photos", icon: <PhotoIcon /> },
+  { path: "/carte", name: "Carte", icon: <PlaceIcon /> },
+  { path: "/partenaires", name: "Partenaires", icon: <FaceIcon /> }
+];
+
 class ResponsiveNav extends React.Component {
   state = {
-    mobileOpen: false,
-    scroll: 0
+    mobileOpen: false
   };
 
   handleDrawerToggle = () => {
     this.setState(state => ({ mobileOpen: !state.mobileOpen }));
-  };
-
-  handleScroll = scroll => {
-    this.setState({ scroll });
   };
 
   render() {
@@ -92,40 +94,28 @@ class ResponsiveNav extends React.Component {
         <div className={classes.toolbar} />
         <Divider />
         <List>
-          <ListItem button component={Link} to={"/"}>
-            <ListItemIcon>
-              <HomeIcon />
-            </ListItemIcon>
-            <ListItemText primary={"Accueil"} />
-          </ListItem>
-          <ListItem button component={Link} to={"/media"}>
-            <ListItemIcon>
-              <PhotoIcon />
-            </ListItemIcon>
-            <ListItemText primary={"Photos"} />
-          </ListItem>
-          <ListItem button component={Link} to={"/carte"}>
-            <ListItemIcon>
-              <PlaceIcon />
-            </ListItemIcon>
-            <ListItemText primary={"Carte"} />
-          </ListItem>
-          <ListItem button component={Link} to={"/partenaires"}>
-            <ListItemIcon>
-              <FaceIcon />
-            </ListItemIcon>
-            <ListItemText primary={"Partenaires"} />
-          </ListItem>
+          {pathConf.map(onPath => {
+            return (
+              <ListItem
+                button
+                component={Link}
+                to={onPath.path}
+                onClick={this.handleDrawerToggle}
+              >
+                <ListItemIcon>{onPath.icon}</ListItemIcon>
+                <ListItemText primary={onPath.name} />
+              </ListItem>
+            );
+          })}
         </List>
       </div>
     );
 
     const tabs = (
       <Tabs value={tabsValue}>
-        <Tab label={"Accueil"} component={Link} to={"/"} />
-        <Tab label={"Photos"} component={Link} to={"/media"} />
-        <Tab label={"Carte"} component={Link} to={"/carte"} />
-        {<Tab label={"Partenaires"} component={Link} to={"/partenaires"} />}
+        {pathConf.map(onPath => {
+          return <Tab label={onPath.name} component={Link} to={onPath.path} />;
+        })}
       </Tabs>
     );
 
