@@ -14,9 +14,7 @@ import purpleColor from "@material-ui/core/colors/purple";
 import indigoColor from "@material-ui/core/colors/indigo";
 import tealColor from "@material-ui/core/colors/teal";
 import lightGreenColor from "@material-ui/core/colors/lightGreen";
-
 import ReactCountryFlag from "react-country-flag";
-
 
 const styles = theme => ({
   root: {
@@ -40,7 +38,9 @@ const styles = theme => ({
     backgroundColor: lightGreenColor[200]
   },
   countries: {
-    display: "flex"
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "center"
   },
   countryFlags: {
     padding: "1px"
@@ -120,12 +120,12 @@ const Indicators = ({ classes, mapData }) => {
               <div className={classes.countries}>
                 {mapData.crossedCountry.map(countryCode => {
                   return (
-                    <div
+                    <span
                       className={classes.countryFlags}
                       key={countryCode.toString()}
                     >
                       <ReactCountryFlag code={countryCode} svg />
-                    </div>
+                    </span>
                   );
                 })}
               </div>
